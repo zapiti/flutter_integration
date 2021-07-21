@@ -1,16 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void secundaryDriver(Function main ) async {
-  final Finder next = find.byKey(Key('next_to_third_button'));
-  testWidgets('tap on the floating action button; verify counter',
-  (WidgetTester tester) async {
+class SecundaryDriver {
+  final WidgetTester tester;
 
-    await tester.pumpAndSettle();
-    print("entroooooo");
-    await tester.pump(Duration(milliseconds: 500));
-    await Future.delayed(Duration(milliseconds: 5000));
-    await tester.tap(next);
-    await Future.delayed(Duration(milliseconds: 5000));
-  });
+  SecundaryDriver(this.tester);
+
+  Future<void> secundaryFluxDriver() async {
+    final Finder nextSecundary = find.byKey(Key('next_to_third_button'));
+    final Finder nextTerceary = find.byKey(Key('next_to_four_button'));
+
+    expect(find.text('5'), findsOneWidget);
+
+    await Future.delayed(Duration(milliseconds: 500));
+
+    await tester.tap(nextSecundary);
+    await Future.delayed(Duration(milliseconds: 500));
+
+    await tester.tap(nextTerceary);
+    await Future.delayed(Duration(milliseconds: 500));
+  }
+
+  Future<void> secundaryBackFlux() async {
+    final Finder backSecond = find.byKey(Key('close_button'));
+    await tester.pump(new Duration(milliseconds: 200));
+    await tester.tap(backSecond);
+    await Future.delayed(Duration(milliseconds: 500));
+  }
 }

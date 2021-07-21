@@ -1,11 +1,15 @@
-// Imports the Flutter Driver API.
-import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_driver/flutter_driver.dart';
-import 'package:test/test.dart';
+class ThirdDriver {
+  WidgetTester tester;
 
-Future<void> thirdDriver(FlutterDriver driver) async {
-  final btnOpen = find.byValueKey("next_to_four_button");
-  await driver.tap(btnOpen);
-  return;
+  ThirdDriver(this.tester);
+
+  Future<void> thirdBackFlux(tester) async {
+    final Finder backThird = find.byKey(Key('close_third_button'));
+    await tester.pump(new Duration(milliseconds: 200));
+    await tester.tap(backThird);
+    await Future.delayed(Duration(milliseconds: 500));
+  }
 }
