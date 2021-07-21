@@ -1,50 +1,83 @@
-// Imports the Flutter Driver API.
-import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_driver/flutter_driver.dart';
-import 'package:test/test.dart';
+import 'package:flutter_integration/main.dart' as app;
 
-void mainDriver(FlutterDriver? driver, Function(FlutterDriver) callBack) {
-  group('Main App', () {
-    final counterTextFinder = find.byValueKey('counterText');
-    final buttonFinder = find.byTooltip('Increment');
-    final buttonOpen = find.byValueKey("open");
-    // final buttonSubtract = find.byValueKey("subtract");
-    // final secundaryValue = find.byValueKey("secudary_value");
-    // final btnClose = find.byValueKey("close_button");
+void mainDriver(Function(WidgetTester) callBack) {
+  final Finder fab = find.byTooltip('Increment');
+  final Finder remove = find.byKey(Key('subtract'));
+  final Finder open = find.byKey(Key('open'));
+  final Finder nextSecundary = find.byKey(Key('next_to_third_button'));
+  final Finder nextTerceary = find.byKey(Key('next_to_four_button'));
 
-    setUpAll(() async {
-      driver = driver ?? await FlutterDriver.connect();
-    });
+  final Finder backFour = find.byKey(Key('close_fourth_button'));
+  final Finder backThird= find.byKey(Key('close_third_button'));
+  final Finder backSecond = find.byKey(Key('close_button'));
 
-    test('Increment the counter', () async {
-      await driver?.tap(buttonFinder);
+  group('end-to-end test', () {
+    testWidgets('tap on the floating action button; verify counter',
+        (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
 
-      expect(await driver?.getText(counterTextFinder), "1");
+      await tester.tap(fab);
+      await Future.delayed(Duration(milliseconds: 200));
+      
+      await tester.tap(fab);
+      await Future.delayed(Duration(milliseconds: 200));
+      
+      await tester.tap(fab);
+      await Future.delayed(Duration(milliseconds: 200));
+      
+      await tester.tap(fab);
+      await Future.delayed(Duration(milliseconds: 200));
+      
+      await tester.tap(fab);
+      await Future.delayed(Duration(milliseconds: 200));
+      
 
-      await driver?.tap(buttonFinder);
 
-      expect(await driver?.getText(counterTextFinder), "2");
+      expect(find.text('5'), findsOneWidget);
+      await tester.tap(open);
+      
+      await Future.delayed(Duration(milliseconds: 500));
+      
+      await tester.tap(nextSecundary);
+      await Future.delayed(Duration(milliseconds: 500));
+      
+      await tester.tap(nextTerceary);
+      await Future.delayed(Duration(milliseconds: 500));
 
-      await driver?.tap(buttonFinder);
-      expect(await driver?.getText(counterTextFinder), "3");
-      await driver?.tap(buttonFinder);
-      expect(await driver?.getText(counterTextFinder), "4");
-      await driver?.tap(buttonFinder);
-    });
+      await tester.pump(new Duration(milliseconds: 200));
+      await tester.tap(backFour);
+      await Future.delayed(Duration(milliseconds: 500));
+      await tester.pump(new Duration(milliseconds: 200));
+      await tester.tap(backThird);
+      await Future.delayed(Duration(milliseconds: 500));
+      await tester.pump(new Duration(milliseconds: 200));
+      await tester.tap(backSecond);
+      await Future.delayed(Duration(milliseconds: 500));
 
-    test("Test with alert window", () async {
-      await driver?.tap(buttonOpen);
 
-      // expect(
-      //     await driver?.getText(secundaryValue), "Welcome to ExecuteAutomation 5");
-      //
-      // await driver?.tap(btnClose);
-      //
-      // await driver?.tap(buttonSubtract);
+      await tester.tap(remove);
+      await Future.delayed(Duration(milliseconds: 200));
 
-      // expect(await driver?.getText(counterTextFinder), "4");
-      callBack(driver!);
+      await tester.tap(remove);
+      await Future.delayed(Duration(milliseconds: 200));
+
+      await tester.tap(remove);
+      await Future.delayed(Duration(milliseconds: 200));
+
+      await tester.tap(remove);
+      await Future.delayed(Duration(milliseconds: 200));
+
+      await tester.tap(remove);
+      await Future.delayed(Duration(milliseconds: 200));
+
+      await tester.tap(remove);
+      await Future.delayed(Duration(milliseconds: 200));
+
+      expect(find.text('2'), findsOneWidget);
     });
   });
 }

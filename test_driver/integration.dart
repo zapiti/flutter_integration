@@ -1,9 +1,14 @@
-import 'package:flutter_driver/driver_extension.dart';
-import 'package:flutter_integration/main.dart' as app;
+
+import 'package:flutter_integration/integration_test/main_driver.dart';
+import 'package:integration_test/integration_test.dart';
+import 'package:secundary_microapp/integration_test/secundary_driver.dart';
 
 void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  enableFlutterDriverExtension();
+    mainDriver((value){
 
-  app.main();
+      // secundaryDriver(value);
+    });
+
 }

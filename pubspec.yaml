@@ -25,20 +25,21 @@ dependencies:
     sdk: flutter
 
   secundary_microapp:
-    path: ./secundary_microapp
+    path: ./microapp/secundary_microapp
 
   third_microapp:
-    path: ./third_microapp
+    path: ./microapp/third_microapp
 
   fourth_microapp:
-    path: ./fourth_microapp
+    path: ./microapp/fourth_microapp
 
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
-  flutter_driver:
+  integration_test:
     sdk: flutter
-  test:
+  flutter_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
