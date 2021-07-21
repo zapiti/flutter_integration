@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:flutter_integration/main.dart' as app;
 
 void mainDriver(Function(WidgetTester) callBack) {
