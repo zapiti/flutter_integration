@@ -1,0 +1,21 @@
+{
+  "name": "appium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "appium-flutter-finder": "0.0.13",
+    "webdriverio": "^5.15.0"
+  },
+  "scripts": {
+    "start": "node test.js",
+    "ios": "APPIUM_OS=ios npm start",
+    "android": "rm -rf node_modules && cd .. && flutter build apk --debug && cd appium && yarn && APPIUM_OS=android npm start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:android":"PLATFORM=Android npx wdio run ./config/wdio.android.conf.ts",
+    "test:ios":"PLATFORM=iOS npx wdio run ./config/wdio.ios.conf.ts"
+  },
+  "author": "Nathan",
+  "private": false,
+  "license": "MIT"
+}

@@ -17,7 +17,7 @@ class ThirdMicroApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Welcome to ExecuteAutomation " + _counter.toString(),
-                key: ValueKey("alert_text")),
+                key: ValueKey("third_value")),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(

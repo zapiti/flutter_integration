@@ -22,7 +22,7 @@ void mainDriver() {
 
       //'secundoFluxo'
       await pageFour.fourthBackFlux();
-      await pageTerceary.thirdBackFlux(tester);
+      await pageTerceary.thirdBackFlux();
       await pageSecundary.secundaryBackFlux();
 
       //'terceiroFluxo'

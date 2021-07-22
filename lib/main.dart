@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:fourth_microapp/fourth_microapp.dart';
 import 'package:secundary_microapp/secundary_microapp.dart';
 import 'package:third_microapp/third_microapp.dart';
+import 'package:flutter_driver/driver_extension.dart';
 
-void main() => runApp(MyApp());
+
+void main() {
+  enableFlutterDriverExtension();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -85,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title), key: ValueKey('app_bar')),
+      appBar: AppBar(title: Text(widget.title), key: Key('app_bar')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
-              key: ValueKey("counterText"),
+              key: Key("counterText"),
             ),
             new Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -128,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'Increment',key: Key('Increment'),
         child: Icon(Icons.add),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

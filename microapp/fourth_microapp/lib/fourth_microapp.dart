@@ -17,7 +17,7 @@ class FourthMicroApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Welcome to ExecuteAutomation " + _counter.toString(),
-                key: ValueKey("alert_text")),
+                key: ValueKey("fourth_value")),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(

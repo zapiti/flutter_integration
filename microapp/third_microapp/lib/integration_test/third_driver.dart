@@ -6,7 +6,7 @@ class ThirdDriver {
 
   ThirdDriver(this.tester);
 
-  Future<void> thirdBackFlux(tester) async {
+  Future<void> thirdBackFlux() async {
     final Finder backThird = find.byKey(Key('close_third_button'));
     await tester.pump(new Duration(milliseconds: 200));
     await tester.tap(backThird);
